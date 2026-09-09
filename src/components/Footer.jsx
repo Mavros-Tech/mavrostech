@@ -18,7 +18,6 @@ export default function Footer() {
                         <Link to="/#services">Services</Link>
                         <Link to="/#process">Process</Link>
                         <Link to="/#tech-stack">Tech Stack</Link>
-                        <Link to="/#client-portal">Client Portal</Link>
                         <Link to="/#contact">Book Strategy Call</Link>
                     </div>
                     <div className="col">

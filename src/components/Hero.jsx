@@ -2,7 +2,6 @@ import { useRef, useState, useEffect } from 'react';
 import { motion, useReducedMotion, useScroll, useTransform, useInView, useMotionValue, useSpring } from 'framer-motion';
 import { ArrowRight, Sparkles, Layers, Zap, ShieldCheck } from 'lucide-react';
 import BackgroundEffects from './BackgroundEffects';
-import ParticleWave from './ParticleWave';
 
 const headingLines = [
   { text: 'One Vision,', style: 'white', delay: 0.1 },
@@ -81,10 +80,10 @@ export default function Hero() {
   return (
     <section
       ref={heroRef}
-      id="top"
+      id="home"
       onPointerMove={handlePointerMove}
       onPointerLeave={resetPointer}
-      className="relative min-h-[100vh] overflow-hidden bg-[#05070B] text-white pt-[120px] pb-16"
+      className="relative overflow-hidden bg-[#05070B] text-white pt-[140px] pb-16 lg:pt-[160px] lg:pb-24"
     >
       <motion.div
         className="pointer-events-none absolute inset-0"
@@ -93,7 +92,7 @@ export default function Hero() {
         <BackgroundEffects />
       </motion.div>
 
-      <div className="relative z-10 mx-auto grid min-h-[100vh] max-w-[1400px] grid-cols-1 gap-16 px-5 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20 lg:px-16">
+      <div className="relative z-10 mx-auto grid max-w-[1400px] grid-cols-1 items-center gap-16 px-5 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20 lg:px-16">
         <motion.div
           className="space-y-10"
           style={shouldReduceMotion ? undefined : { x: headlineX, y: headlineYMouse }}
@@ -273,7 +272,6 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      <ParticleWave />
     </section>
   );
 }

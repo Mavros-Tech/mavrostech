@@ -3,18 +3,18 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 
 const navItems = [
-  { label: 'Home', href: '/', id: 'top' },
-  { label: 'Services', href: '/services', id: 'services' },
-  { label: 'Process', href: '/process', id: 'process' },
-  { label: 'Case Studies', href: '/case-studies', id: 'case-studies' },
-  { label: 'Impact', href: '/impact', id: 'impact' },
+  { label: 'Home', href: '/#home', id: 'home' },
+  { label: 'Services', href: '/#services', id: 'services' },
+  { label: 'Process', href: '/#process', id: 'process' },
+  { label: 'Case Studies', href: '/#case-studies', id: 'case-studies' },
+  { label: 'Impact', href: '/#impact', id: 'impact' },
 ];
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
-  const [activeSection, setActiveSection] = useState('top');
+  const [activeSection, setActiveSection] = useState('home');
   const location = useLocation();
 
   useEffect(() => {
@@ -38,14 +38,32 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Active state based purely on route
+  // Active state based on scroll position
   useEffect(() => {
-    const path = location.pathname;
-    if (path === '/services') setActiveSection('services');
-    else if (path === '/process') setActiveSection('process');
-    else if (path === '/case-studies') setActiveSection('case-studies');
-    else if (path === '/impact') setActiveSection('impact');
-    else if (path === '/') setActiveSection('top');
+    if (location.pathname !== '/') return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+            // Replace URL hash silently without jumping
+            if (window.location.hash !== `#${entry.target.id}`) {
+              window.history.replaceState(null, '', `/#${entry.target.id}`);
+            }
+          }
+        });
+      },
+      {
+        rootMargin: '-100px 0px -50% 0px',
+        threshold: 0
+      }
+    );
+
+    const sections = navItems.map(item => document.getElementById(item.id)).filter(Boolean);
+    sections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
   }, [location.pathname]);
 
   useEffect(() => {
