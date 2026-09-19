@@ -130,14 +130,31 @@ export default function DigitalPartnerships() {
                 </div>
 
                 {partnership.preview ? (
-                  <img
-                    src={partnership.preview}
-                    alt={`${partnership.name} website created by Mavros Tech`}
-                  />
+                  partnership.website ? (
+                    <a href={partnership.website} target="_blank" rel="noopener noreferrer" style={{ display: 'block', width: '100%', height: '100%', cursor: 'pointer', textDecoration: 'none' }}>
+                      <img
+                        src={partnership.preview}
+                        alt={`${partnership.name} website created by Mavros Tech`}
+                      />
+                    </a>
+                  ) : (
+                    <img
+                      src={partnership.preview}
+                      alt={`${partnership.name} website created by Mavros Tech`}
+                    />
+                  )
                 ) : partnership.logo ? (
-                  <div className="collab-project-logo">
-                    <img src={partnership.logo} alt={`${partnership.name} logo`} />
-                  </div>
+                  partnership.website ? (
+                    <a href={partnership.website} target="_blank" rel="noopener noreferrer" style={{ display: 'block', width: '100%', height: '100%', cursor: 'pointer', textDecoration: 'none' }}>
+                      <div className="collab-project-logo">
+                        <img src={partnership.logo} alt={`${partnership.name} logo`} />
+                      </div>
+                    </a>
+                  ) : (
+                    <div className="collab-project-logo">
+                      <img src={partnership.logo} alt={`${partnership.name} logo`} />
+                    </div>
+                  )
                 ) : (
                   <div className="dp-project-art" aria-hidden="true">
                     <span>{partnership.category}</span>

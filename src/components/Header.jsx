@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useEffect, useRef } from 'react'
+import { navItems } from './Navbar'
 
 export default function Header() {
   const headerRef = useRef(null);
@@ -52,11 +53,10 @@ export default function Header() {
                     <span style={{ fontSize: '20px', fontWeight: 'bold', letterSpacing: '1px', color: '#fff' }}>MAVROS</span>
                   </Link>
                   <div className="nav-links" id="nav-links">
-                      <Link to="/#top" onClick={closeMobileMenu}>Home</Link>
-                      <Link to="/#services" onClick={closeMobileMenu}>Services</Link>
-                      <Link to="/#process" onClick={closeMobileMenu}>Process</Link>
-                      <Link to="/#tech-stack" onClick={closeMobileMenu}>Tech Stack</Link>
-                      <Link to="/#contact" className="btn btn-primary cta-link" onClick={closeMobileMenu}>Book Strategy Call</Link>
+                      {navItems.map(item => (
+                        <Link key={item.label} to={item.to} onClick={closeMobileMenu}>{item.label}</Link>
+                      ))}
+                      <Link to="/#contact" className="btn btn-primary cta-link" onClick={closeMobileMenu}>Let's talk</Link>
                   </div>
                   <button className="mobile-toggle" id="mobile-toggle" aria-label="Toggle menu" onClick={toggleMobileMenu}>☰</button>
               </nav>

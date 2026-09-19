@@ -79,21 +79,37 @@ export default function Partnerships() {
                   </div>
                   <ul aria-label={`${client.name} services`}>
                     {client.services.map((service) => <li key={service}>{service}</li>)}
+                    {client.website && (
+                      <a href={client.website} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'inherit' }}>
+                        <li style={{ cursor: 'pointer' }}>WEBSITE</li>
+                      </a>
+                    )}
                   </ul>
-                  {client.website && (
-                    <a href={client.website} target="_blank" rel="noreferrer">Visit website <ArrowUpRight /></a>
-                  )}
                 </div>
 
-                <div className="partnership-logo-stage" aria-label={`${client.name} logo placeholder`}>
-                  {!client.logo && <div className="partnership-logo-grid" aria-hidden="true" />}
-                  {client.logo ? (
-                    <img className="partnership-logo-img" src={client.logo} alt={`${client.name} logo`} />
-                  ) : (
-                    <strong>{client.initials}</strong>
-                  )}
-                  {!client.logo && <span>{client.name}</span>}
-                </div>
+                {client.website ? (
+                  <a href={client.website} target="_blank" rel="noopener noreferrer" style={{ display: 'block', cursor: 'pointer', textDecoration: 'none' }}>
+                    <div className="partnership-logo-stage" aria-label={`${client.name} logo placeholder`}>
+                      {!client.logo && <div className="partnership-logo-grid" aria-hidden="true" />}
+                      {client.logo ? (
+                        <img className="partnership-logo-img" src={client.logo} alt={`${client.name} logo`} />
+                      ) : (
+                        <strong>{client.initials}</strong>
+                      )}
+                      {!client.logo && <span>{client.name}</span>}
+                    </div>
+                  </a>
+                ) : (
+                  <div className="partnership-logo-stage" aria-label={`${client.name} logo placeholder`}>
+                    {!client.logo && <div className="partnership-logo-grid" aria-hidden="true" />}
+                    {client.logo ? (
+                      <img className="partnership-logo-img" src={client.logo} alt={`${client.name} logo`} />
+                    ) : (
+                      <strong>{client.initials}</strong>
+                    )}
+                    {!client.logo && <span>{client.name}</span>}
+                  </div>
+                )}
               </Reveal>
             );
           })}

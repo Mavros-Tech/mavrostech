@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { navItems } from './Navbar'
 
 export default function Footer() {
     return (
@@ -14,11 +15,10 @@ export default function Footer() {
                     </div>
                     <div className="col">
                         <div className="col-h">Site</div>
-                        <Link to="/#top">Home</Link>
-                        <Link to="/#services">Services</Link>
-                        <Link to="/#process">Process</Link>
-                        <Link to="/#tech-stack">Tech Stack</Link>
-                        <Link to="/#contact">Book Strategy Call</Link>
+                        {navItems.map(item => (
+                            <Link key={item.label} to={item.to}>{item.label}</Link>
+                        ))}
+                        <Link to="/#contact">Let's talk</Link>
                     </div>
                     <div className="col">
                         <div className="col-h">Contact</div>

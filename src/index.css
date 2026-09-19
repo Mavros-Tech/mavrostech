@@ -4298,8 +4298,6 @@ footer .col a:hover {
 }
 
 .demo-portal:hover {
-    background: var(--foreground);
-    color: var(--background);
     transform: translateY(-8px);
 }
 
@@ -4318,7 +4316,6 @@ footer .col a:hover {
 }
 
 .demo-portal:hover .demo-portal-count {
-    color: color-mix(in oklab, var(--background) 16%, transparent);
     transform: translateY(6px) scale(1.04);
 }
 
@@ -4367,12 +4364,8 @@ footer .col a:hover {
 }
 
 .demo-portal:hover .demo-geometry {
-    border-color: color-mix(in oklab, var(--background) 28%, transparent);
+    border-color: color-mix(in oklab, var(--foreground) 28%, transparent);
     transform: translateY(-50%) rotate(120deg) scale(1.12);
-}
-
-.demo-portal:hover .demo-geometry i:last-child {
-    background: var(--background);
 }
 
 .demo-portal-copy {
@@ -4395,10 +4388,7 @@ footer .col a:hover {
     transition: color .4s ease;
 }
 
-.demo-portal:hover .demo-portal-text,
-.demo-portal:hover .demo-portal-top {
-    color: color-mix(in oklab, var(--background) 68%, transparent);
-}
+
 
 .demo-portal-list {
     display: flex;
@@ -4417,7 +4407,7 @@ footer .col a:hover {
 }
 
 .demo-portal:hover .demo-portal-list li {
-    border-color: color-mix(in oklab, var(--background) 32%, transparent);
+    border-color: color-mix(in oklab, var(--foreground) 32%, transparent);
 }
 
 .demo-portal-cta {

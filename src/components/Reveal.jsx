@@ -5,6 +5,7 @@ export function Reveal({
   delay = 0,
   className = "",
   as: Tag = "div",
+  ...rest
 }) {
   const ref = useRef(null);
   const [shown, setShown] = useState(false);
@@ -33,6 +34,7 @@ export function Reveal({
       ref={ref}
       style={{ transitionDelay: `${delay}ms` }}
       className={`reveal ${shown ? "is-visible" : ""} ${className}`.trim()}
+      {...rest}
     >
       {children}
     </Component>

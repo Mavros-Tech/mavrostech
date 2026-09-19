@@ -8,4 +8,5 @@ export const clipNCopy = {
   outcome: "We designed and launched a full e-commerce website with a structured product catalogue, simple categories and a checkout that feels effortless. Alongside it, we run the digital marketing — campaigns and content that bring the shop's range to the audience searching for it.",
   initials: "CC",
   logo: "/assets/clip-n-copy-logo.png",
+  website: "https://clipncopy.co.in",
 };

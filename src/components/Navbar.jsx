@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"; // swap for your router's Link
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import { useScrollLock } from "../hooks/useScrollLock";
 
-const navItems = [
+export const navItems = [
   { label: "Home", to: "/" },
   { label: "About", to: "/about" },
   { label: "Team", to: "/about#team" },
