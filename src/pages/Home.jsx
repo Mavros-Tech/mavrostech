@@ -3,14 +3,17 @@ import { Link } from 'react-router-dom';
 import { MapPin, Phone, ArrowUpRight } from 'lucide-react';
 import SEO from '../components/SEO';
 import Hero from '../components/Hero';
-import Collaborators from '../components/Collaborators';
-import EcosystemSection from '../components/EcosystemSection';
+
+
 import Process from '../components/Process';
-import VentureStack from '../components/VentureStack';
+import { ProductsSection } from '../components/ProductsSection';
 import ImpactGrid from '../components/ImpactGrid';
 import BeforeAfterSlider from '../components/BeforeAfterSlider';
 import CaseStudiesPreview from '../components/CaseStudiesPreview';
 import ServicesSection from '../components/ServicesSection';
+import StartProjectSection from '../components/StartProjectSection';
+import MeetTheTeamSection from '../components/MeetTheTeamSection';
+import DigitalPartnerships from '../components/DigitalPartnerships';
 
 export default function Home() {
 
@@ -76,33 +79,22 @@ export default function Home() {
 
       <main>
         <Hero />
-        <Collaborators />
 
-        <EcosystemSection />
+        <div id="impact">
+          <ImpactGrid />
+        </div>
+
+        <ProductsSection />
 
         <ServicesSection />
 
+        <DigitalPartnerships />
+
         <Process />
 
-        <section className="section-pad scroll-mt-[112px]" id="case-studies">
-          <div className="wrap">
-            <div className="section-label venture-sticky-label">CASE STUDIES</div>
-            <h2 className="reveal" style={{ fontSize: 'clamp(26px,3.4vw,42px)', maxWidth: '700px', marginBottom: '60px' }}>
-              Products we build.<br />
-              <span style={{ background: 'linear-gradient(135deg,#fff 30%,#9b8aff)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Ventures that scale.</span>
-            </h2>
-            <VentureStack />
-          </div>
-        </section>
+        <MeetTheTeamSection />
 
-
-        <section className="section-pad" id="impact">
-          <div className="wrap">
-            <div className="section-label">IMPACT</div>
-            <h2 className="reveal" style={{ fontSize: 'clamp(26px,3.4vw,38px)', maxWidth: '600px' }}>Building technology that creates lasting value.</h2>
-            <ImpactGrid />
-          </div>
-        </section>
+        <StartProjectSection />
 
 <section className="section-pad" id="contact">
           <div className="wrap">

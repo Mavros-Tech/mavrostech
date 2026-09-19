@@ -1,5 +1,6 @@
-import { useRef, useState, useEffect, useMemo } from 'react';
+import { useRef, useMemo } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { useIsMobile } from '../hooks/useIsMobile';
 
 const getStars = (isMobile) => {
   const count = isMobile ? 40 : 120;
@@ -22,15 +23,8 @@ const constellationLines = [
 ];
 
 export default function BackgroundEffects() {
-  const [isMobile, setIsMobile] = useState(false);
+  const isMobile = useIsMobile();
   const containerRef = useRef(null);
-  
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-    window.addEventListener('resize', checkMobile, { passive: true });
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
 
   const stars = useMemo(() => getStars(isMobile), [isMobile]);
   const isInView = useInView(containerRef, { amount: 0.1 });

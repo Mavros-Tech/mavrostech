@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import { useScrollLock } from '../hooks/useScrollLock';
 
 const ventureDetails = {
   veytrix: {
@@ -34,6 +35,8 @@ export default function VentureStack() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [activeModal, setActiveModal] = useState(null); // 'veytrix' or 'director' or null
   const totalCards = 2;
+
+  useScrollLock(!!activeModal);
 
   const updatePagination = () => {
     if (!stackRef.current) return;

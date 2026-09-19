@@ -1,0 +1,241 @@
+/* ============ meet-team.css — all styles + animations ============ */
+
+:root {
+  --mt-bg: #0a0a0a;
+  --mt-surface: #101010;
+  --mt-border: rgba(255, 255, 255, 0.14);
+  --mt-text: #fafafa;
+  --mt-muted: rgba(255, 255, 255, 0.62);
+}
+
+/* ---------- section ---------- */
+.meet-team {
+  position: relative;
+  overflow: hidden;
+  background: #000;
+  padding: 48px 24px;
+}
+
+/* ---------- animated grid lines ---------- */
+.mt-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.045) 1px,
+    transparent 1px
+  );
+  background-size: min(11vw, 150px) 100%;
+  animation: mt-grid-drift 20s linear infinite;
+}
+@keyframes mt-grid-drift {
+  from { background-position-x: 0; }
+  to   { background-position-x: min(11vw, 150px); }
+}
+
+/* ---------- breathing glow behind content ---------- */
+.mt-glow {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 60%;
+  height: 140%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 255, 255, 0.07),
+    transparent 65%
+  );
+  filter: blur(40px);
+  pointer-events: none;
+  animation: mt-glow-breathe 6s ease-in-out infinite;
+}
+@keyframes mt-glow-breathe {
+  0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+  50%      { opacity: 1;   transform: translate(-50%, -50%) scale(1.08); }
+}
+
+/* ---------- layout ---------- */
+.mt-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+/* ---------- staggered entrance ---------- */
+.mt-kicker,
+.mt-title .mt-line,
+.mt-sub,
+.mt-button {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.7s cubic-bezier(0.2, 0.75, 0.2, 1),
+    transform 0.7s cubic-bezier(0.2, 0.75, 0.2, 1);
+}
+.mt-visible .mt-kicker              { transition-delay: 0.05s; }
+.mt-visible .mt-title .mt-line      { transition-delay: 0.15s; }
+.mt-visible .mt-title .mt-line:last-child { transition-delay: 0.25s; }
+.mt-visible .mt-sub                 { transition-delay: 0.35s; }
+.mt-visible .mt-button              { transition-delay: 0.45s; }
+
+.mt-visible .mt-kicker,
+.mt-visible .mt-title .mt-line,
+.mt-visible .mt-sub,
+.mt-visible .mt-button {
+  opacity: 1;
+  transform: none;
+}
+
+/* title lines clip-reveal */
+.mt-title .mt-line {
+  display: block;
+}
+
+/* ---------- kicker ---------- */
+.mt-kicker {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: "Space Mono", ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  color: var(--mt-muted);
+  margin: 0 0 18px;
+}
+.mt-kicker-line {
+  display: inline-block;
+  width: 0;
+  height: 1px;
+  background: var(--mt-text);
+  transition: width 0.8s cubic-bezier(0.22, 0.9, 0.3, 1) 0.5s;
+}
+.mt-visible .mt-kicker-line {
+  width: 44px;
+}
+
+/* ---------- title ---------- */
+.mt-title {
+  margin: 0;
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  font-weight: 600;
+  line-height: 1.05;
+  color: var(--mt-text);
+  letter-spacing: -0.02em;
+}
+
+.mt-sub {
+  margin: 18px 0 0;
+  max-width: 420px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--mt-muted);
+}
+
+/* ---------- luminous button ---------- */
+.mt-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  align-self: flex-start;
+  padding: 16px 30px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #0a0a0a;
+  background: #fafafa;
+  border: 1px solid #fafafa;
+  border-radius: 2px;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+  animation: mt-button-pulse 3.2s ease-in-out infinite;
+  transition:
+    transform 0.35s cubic-bezier(0.22, 0.9, 0.3, 1),
+    box-shadow 0.35s ease,
+    opacity 0.7s cubic-bezier(0.2, 0.75, 0.2, 1);
+}
+@keyframes mt-button-pulse {
+  0%, 100% { box-shadow: 0 0 0 rgba(255, 255, 255, 0); }
+  50%      { box-shadow: 0 0 26px rgba(255, 255, 255, 0.22); }
+}
+.mt-button:hover,
+.mt-button:focus-visible {
+  transform: translateY(-3px);
+  animation: none;
+  box-shadow:
+    0 0 36px rgba(255, 255, 255, 0.3),
+    0 18px 50px -18px rgba(255, 255, 255, 0.4);
+}
+
+/* shine sweep across the button on hover */
+.mt-button-shine {
+  position: absolute;
+  top: 0;
+  left: -80%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    100deg,
+    transparent,
+    rgba(10, 10, 10, 0.14),
+    transparent
+  );
+  transform: skewX(-20deg);
+  transition: left 0.6s ease;
+  pointer-events: none;
+}
+.mt-button:hover .mt-button-shine {
+  left: 130%;
+}
+
+/* arrow slides on hover + gentle idle nudge */
+.mt-arrow {
+  transition: transform 0.35s cubic-bezier(0.22, 0.9, 0.3, 1);
+  animation: mt-arrow-nudge 2.4s ease-in-out infinite;
+}
+@keyframes mt-arrow-nudge {
+  0%, 100% { transform: translateX(0); }
+  50%      { transform: translateX(3px); }
+}
+.mt-button:hover .mt-arrow {
+  animation: none;
+  transform: translateX(5px);
+}
+
+/* ---------- desktop layout ---------- */
+@media (min-width: 768px) {
+  .meet-team { padding: 48px 32px; }
+  .mt-inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 48px;
+  }
+  .mt-button { flex-shrink: 0; align-self: center; }
+}
+
+/* ---------- reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .mt-grid,
+  .mt-glow,
+  .mt-button,
+  .mt-arrow {
+    animation: none;
+  }
+  .mt-kicker,
+  .mt-title .mt-line,
+  .mt-sub,
+  .mt-button,
+  .mt-kicker-line {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+  .mt-kicker-line { width: 44px; }
+}

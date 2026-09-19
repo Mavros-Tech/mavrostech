@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { WHATSAPP_NUMBER } from '../config/whatsapp';
 import { MessageCircle, X, ArrowRight } from 'lucide-react';
+import { useScrollLock } from '../hooks/useScrollLock';
 
 const enquiryOptions = [
   {
@@ -28,6 +29,8 @@ const enquiryOptions = [
 export default function WhatsAppIntegration() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const modalRef = useRef(null);
+  
+  useScrollLock(isModalOpen);
 
   useEffect(() => {
     const handleOpenModal = () => setIsModalOpen(true);
@@ -105,7 +108,7 @@ export default function WhatsAppIntegration() {
             </div>
             
             {/* Modal Body */}
-            <div className="p-6 flex flex-col gap-3 overflow-y-auto">
+            <div className="p-6 flex flex-col gap-3 overflow-y-auto overscroll-contain">
               {enquiryOptions.map((option, index) => (
                 <button
                   key={index}

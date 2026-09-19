@@ -1,145 +1,55 @@
-import { useRef, useState, useEffect } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useGSAP } from '@gsap/react';
+import { Asterisk } from "lucide-react";
 
-gsap.registerPlugin(ScrollTrigger);
+const pillars = [
+  { title: "Innovation", text: "Products that simplify complexity and turn ambitious ideas into working systems." },
+  { title: "Efficiency", text: "Systems that remove repetitive work and make room for meaningful decisions." },
+  { title: "Future", text: "Practical AI and automation that helps people and businesses move forward." },
+];
 
 export default function ImpactGrid() {
-  const containerRef = useRef(null);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth <= 900);
-    checkMobile();
-    window.addEventListener('resize', checkMobile, { passive: true });
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-
-  useGSAP(() => {
-    if (isMobile) return; // Skip GSAP on mobile to allow native horizontal scroll
-
-    const impactCards = gsap.utils.toArray('.impact-card');
-    
-    impactCards.forEach((card, idx) => {
-      let activeBorderColor = 'rgba(255, 255, 255, 0.4)';
-      if (idx === 0) activeBorderColor = 'rgba(124, 110, 242, 0.4)';
-      else if (idx === 1) activeBorderColor = 'rgba(31, 182, 255, 0.4)';
-      else if (idx === 2) activeBorderColor = 'rgba(34, 211, 161, 0.4)';
-
-      gsap.fromTo(card,
-        {
-          opacity: 0.35,
-          scale: 0.95,
-          borderColor: 'rgba(255, 255, 255, 0.14)',
-          borderRadius: '16px 16px 16px 16px',
-          y: 20
-        },
-        {
-          opacity: 1,
-          scale: 1.02,
-          borderColor: activeBorderColor,
-          borderRadius: '28px 18px 34px 20px',
-          y: 0,
-          scrollTrigger: {
-            trigger: card,
-            start: "top 80%",
-            end: "bottom 20%",
-            scrub: true
-          }
-        }
-      );
-    });
-  }, { scope: containerRef, dependencies: [isMobile] });
-
-  useEffect(() => {
-    if (!isMobile) return;
-
-    const cards = containerRef.current.querySelectorAll('.impact-card');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('mobile-active');
-        } else {
-          entry.target.classList.remove('mobile-active');
-        }
-      });
-    }, {
-      root: containerRef.current,
-      threshold: 0.6 // Trigger when 60% of card is visible
-    });
-
-    cards.forEach(card => observer.observe(card));
-    return () => observer.disconnect();
-  }, [isMobile]);
-
-  const handlePointerMove = (e, idx) => {
-    if (isMobile) return;
-    const card = e.currentTarget;
-    const glow = card.querySelector('.impact-glow');
-    if (!glow) return;
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    glow.style.left = x + 'px';
-    glow.style.top = y + 'px';
-  };
-
   return (
-    <div className="impact-grid" ref={containerRef}>
-      <div className="impact-card" onPointerMove={(e) => handlePointerMove(e, 0)}>
-        <div className="impact-glow"></div>
-        <div className="n">01</div>
-        <h3>Innovation</h3>
-        <div className="impact-row">
-          <div className="k">Vision</div>
-          <p>The future belongs to intelligent products that simplify complexity.</p>
-        </div>
-        <div className="impact-row">
-          <div className="k">Action</div>
-          <p>We develop AI-powered applications and digital platforms that solve meaningful problems.</p>
-        </div>
-        <div className="impact-row">
-          <div className="k">Impact</div>
-          <p>Technology that empowers people and businesses to achieve more.</p>
+    <section className="impact-stage">
+      <div className="impact-marquee" aria-hidden="true">
+        <div className="impact-marquee-track">
+          {Array.from({ length: 8 }).map((_, i) => (
+            <span key={i}>
+              INNOVATION<i>✦</i>EFFICIENCY<i>✦</i>FUTURE<i>✦</i>
+            </span>
+          ))}
+          {Array.from({ length: 8 }).map((_, i) => (
+            <span key={`dup-${i}`} aria-hidden="true">
+              INNOVATION<i>✦</i>EFFICIENCY<i>✦</i>FUTURE<i>✦</i>
+            </span>
+          ))}
         </div>
       </div>
 
-      <div className="impact-card" onPointerMove={(e) => handlePointerMove(e, 1)}>
-        <div className="impact-glow"></div>
-        <div className="n">02</div>
-        <h3>Efficiency</h3>
-        <div className="impact-row">
-          <div className="k">Vision</div>
-          <p>Organizations should spend less time on repetitive work and more time creating value.</p>
+      <div className="impact-header">
+        <div>
+          <p className="impact-label"><span className="impact-label-line" />OUR IMPACT</p>
+          <h2 className="impact-heading">Technology should create lasting value.</h2>
         </div>
-        <div className="impact-row">
-          <div className="k">Action</div>
-          <p>We build intelligent systems that automate workflows and improve decision-making.</p>
-        </div>
-        <div className="impact-row">
-          <div className="k">Impact</div>
-          <p>Greater productivity, faster execution, and scalable growth.</p>
-        </div>
+        <p className="impact-sub">
+          Hover a pillar. We measure success by how clearly our work removes
+          friction, unlocks growth and prepares organizations for what comes next.
+        </p>
       </div>
 
-      <div className="impact-card" onPointerMove={(e) => handlePointerMove(e, 2)}>
-        <div className="impact-glow"></div>
-        <div className="n">03</div>
-        <h3>Future</h3>
-        <div className="impact-row">
-          <div className="k">Vision</div>
-          <p>AI should be practical, accessible, and beneficial for everyone.</p>
-        </div>
-        <div className="impact-row">
-          <div className="k">Action</div>
-          <p>We continuously explore new ideas, products, and technologies that shape tomorrow.</p>
-        </div>
-        <div className="impact-row">
-          <div className="k">Impact</div>
-          <p>A growing ecosystem of solutions that drives innovation across industries.</p>
-        </div>
+      <div className="impact-panels">
+        {pillars.map(({ title, text }) => (
+          <article key={title} className="impact-panel" tabIndex={0}>
+            <span className="impact-glow" aria-hidden="true" />
+            <span className="impact-scan" aria-hidden="true" />
+            <span className="impact-idx" aria-hidden="true">{title}</span>
+            <span className="impact-vert" aria-hidden="true">{title}</span>
+            <div className="impact-open">
+              <Asterisk className="h-8 w-8" strokeWidth={1.2} />
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </div>
+          </article>
+        ))}
       </div>
-    </div>
+    </section>
   );
 }

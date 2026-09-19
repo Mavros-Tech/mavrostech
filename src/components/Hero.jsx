@@ -1,7 +1,8 @@
-import { useRef, useState, useEffect } from 'react';
+import { useRef } from 'react';
 import { motion, useReducedMotion, useScroll, useTransform, useInView, useMotionValue, useSpring } from 'framer-motion';
 import { ArrowRight, Sparkles, Layers, Zap, ShieldCheck } from 'lucide-react';
 import BackgroundEffects from './BackgroundEffects';
+import { useIsMobile } from '../hooks/useIsMobile';
 
 const headingLines = [
   { text: 'One Vision,', style: 'white', delay: 0.1 },
@@ -33,14 +34,7 @@ const trustSignals = [
 
 export default function Hero() {
   const shouldReduceMotion = useReducedMotion();
-  const [isMobile, setIsMobile] = useState(false);
-  
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-    window.addEventListener('resize', checkMobile, { passive: true });
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
+  const isMobile = useIsMobile();
 
   const heroRef = useRef(null);
   const isInView = useInView(heroRef, { once: true, amount: 0.25 });
@@ -83,7 +77,7 @@ export default function Hero() {
       id="home"
       onPointerMove={handlePointerMove}
       onPointerLeave={resetPointer}
-      className="relative overflow-hidden bg-[#05070B] text-white pt-[140px] pb-16 lg:pt-[160px] lg:pb-24"
+      className="relative overflow-hidden bg-[#05070B] text-white pt-[95px] pb-16 lg:pt-[110px] lg:pb-24"
     >
       <motion.div
         className="pointer-events-none absolute inset-0"
@@ -94,7 +88,7 @@ export default function Hero() {
 
       <div className="relative z-10 mx-auto grid max-w-[1400px] grid-cols-1 items-center gap-16 px-5 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20 lg:px-16">
         <motion.div
-          className="space-y-10"
+          className="space-y-10 order-2 lg:order-1"
           style={shouldReduceMotion ? undefined : { x: headlineX, y: headlineYMouse }}
         >
           <motion.div
@@ -129,9 +123,8 @@ export default function Hero() {
                   className="block overflow-hidden"
                 >
                   <span
-                    className={`hero-heading-line relative inline-flex overflow-hidden transition duration-500 ease-out ${
-                      line.style === 'highlight' ? 'text-white' : ''
-                    }`}
+                    className={`hero-heading-line relative inline-flex overflow-hidden transition duration-500 ease-out ${line.style === 'highlight' ? 'text-white' : ''
+                      }`}
                   >
                     {line.style === 'gradient' ? (
                       <span className="relative inline-flex items-center overflow-hidden">
@@ -141,7 +134,7 @@ export default function Hero() {
                         <motion.span
                           className="absolute -bottom-1 left-0 h-[2px] w-16 rounded-full bg-gradient-to-r from-sky-400/90 via-cyan-300/75 to-violet-400/90 opacity-0"
                           initial={{ opacity: 0, x: -12 }}
-                          animate={shouldReduceMotion ? undefined : { opacity: [0, 1], x: [ -12, 0 ] }}
+                          animate={shouldReduceMotion ? undefined : { opacity: [0, 1], x: [-12, 0] }}
                           transition={{ duration: 1.1, ease: 'easeOut', delay: 1.2 }}
                         />
                       </span>
@@ -201,7 +194,7 @@ export default function Hero() {
               <ArrowRight className="ml-2 h-4 w-4" />
             </motion.a>
             <motion.a
-              href="#projects"
+              href="#work"
               className="inline-flex items-center justify-center rounded-full border border-white/15 bg-transparent px-8 py-4 text-sm font-semibold text-white shadow-[0_8px_24px_rgba(255,255,255,0.04)] transition duration-300 hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/10"
               whileHover={shouldReduceMotion ? undefined : { y: -2 }}
             >
@@ -214,7 +207,7 @@ export default function Hero() {
           initial={shouldReduceMotion ? undefined : { opacity: 0, y: 24, scale: 0.98 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 1.1, ease: 'easeOut' }}
-          className="relative flex justify-center lg:pl-8"
+          className="relative flex justify-center lg:pl-8 order-1 lg:order-2"
           style={shouldReduceMotion ? undefined : { x: visualX, y: visualY, scale: visualScale, opacity: visualOpacity }}
         >
           <div className="hidden md:block absolute -left-10 top-16 h-[320px] w-[320px] rounded-full bg-blue-500/10 blur-3xl" />

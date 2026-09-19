@@ -1,128 +1,56 @@
-import { useState, useEffect, useRef } from 'react';
-
-const stages = [
-  {
-    n: '01',
-    t: 'Discover',
-    tag: '01 — DISCOVER',
-    title: 'Understanding the Vision',
-    desc: 'We begin by understanding the problem, defining goals, and identifying opportunities where AI and technology can create meaningful impact.'
-  },
-  {
-    n: '02',
-    t: 'Design',
-    tag: '02 — DESIGN',
-    title: 'Crafting the Experience',
-    desc: 'We design intuitive user experiences, system architectures, and product strategies that align with business objectives and user needs.'
-  },
-  {
-    n: '03',
-    t: 'Develop',
-    tag: '03 — DEVELOP',
-    title: 'Building Intelligent Solutions',
-    desc: 'Our team develops AI-powered applications, modern web platforms, and scalable digital products using cutting-edge technologies and best practices.'
-  },
-  {
-    n: '04',
-    t: 'Launch & Scale',
-    tag: '04 — LAUNCH & SCALE',
-    title: 'Growing for the Future',
-    desc: 'We deploy, optimize, and continuously improve products to ensure performance, scalability, and long-term success as businesses evolve.'
-  }
-];
+import React, { useEffect, useRef, useState } from "react";
 
 export default function Process() {
-  const [activeTab, setActiveTab] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-  const [isDesktop, setIsDesktop] = useState(false);
-  const timerRef = useRef(null);
+  const sectionRef = useRef(null);
+  const [shown, setShown] = useState(false);
 
   useEffect(() => {
-    const checkDesktop = () => setIsDesktop(window.innerWidth > 900);
-    checkDesktop();
-    window.addEventListener('resize', checkDesktop, { passive: true });
-    return () => window.removeEventListener('resize', checkDesktop);
+    const el = sectionRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShown(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
   }, []);
 
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const reduceMotion = mediaQuery.matches;
-
-    if (reduceMotion || isPaused) {
-      if (timerRef.current) clearInterval(timerRef.current);
-      return;
-    }
-
-    timerRef.current = setInterval(() => {
-      setActiveTab((prev) => (prev + 1) % stages.length);
-    }, 5000);
-
-    return () => {
-      if (timerRef.current) clearInterval(timerRef.current);
-    };
-  }, [isPaused]);
-
-  const handleTabClick = (index) => {
-    setActiveTab(index);
-  };
-
-  const handleMouseEnter = (index) => {
-    setIsPaused(true);
-    if (isDesktop) {
-      setActiveTab(index);
-    }
-  };
+  const stages = [
+    ['01','Discover','Understand the problem, define the goals and identify where technology can create meaningful impact.'],
+    ['02','Design','Shape the experience, system architecture and product strategy around real user needs.'],
+    ['03','Develop','Build the AI-powered application or digital platform with quality engineered into every layer.'],
+    ['04','Launch & Scale','Deploy, optimize and evolve the product as your audience and ambitions grow.']
+  ];
 
   return (
-    <section className="section-pad" id="process">
-      <div className="wrap">
-        <div className="section-label">HOW MAVROS WORKS</div>
-        <h2 className="reveal" style={{ fontSize: 'clamp(26px,3.4vw,38px)', maxWidth: '560px' }}>
-          Four stages, turning ideas into intelligent products.
+    <section id="process" className="border-y border-white/15 bg-[#050505]">
+      <div 
+        ref={sectionRef} 
+        className={`mx-auto max-w-7xl px-5 pt-10 pb-12 lg:px-8 lg:pt-12 lg:pb-16 reveal ${shown ? 'is-visible' : ''}`}
+      >
+        <p className="mb-7 flex items-center gap-3 text-[11px] font-semibold tracking-[0.24em] text-white uppercase font-mono">
+          <span className="h-px w-7 bg-white/50" />HOW MAVROS WORKS
+        </p>
+        <h2 className="max-w-4xl text-4xl font-semibold leading-tight md:text-6xl text-white">
+          Four clear stages. One extraordinary product.
         </h2>
-
-        <div className="stage-shell reveal">
-          <div className="stage-tabs" id="stage-tabs">
-            {stages.map((stage, idx) => (
-              <div
-                key={idx}
-                className={`stage-tab ${activeTab === idx ? 'active' : ''}`}
-                onClick={() => handleTabClick(idx)}
-                onMouseEnter={() => handleMouseEnter(idx)}
-                onMouseLeave={() => setIsPaused(false)}
-                style={{ cursor: 'pointer' }}
-              >
-                <div className="n">{stage.n}</div>
-                <div className="t">{stage.t}</div>
-                <div className="bar"></div>
-              </div>
-            ))}
-          </div>
-          <div className="stage-panels-container">
-            {stages.map((stage, idx) => (
-              <div
-                key={idx}
-                className={`stage-panel ${activeTab === idx ? 'active' : ''}`}
-              >
-                <span className="tag">{stage.tag}</span>
-                <h3
-                  style={{
-                    margin: '0 0 14px',
-                    fontSize: '1.45rem',
-                    fontWeight: 800,
-                    letterSpacing: '-0.02em',
-                    background: 'linear-gradient(135deg,#ffffff 0%, rgba(255,255,255,0.92) 100%)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text'
-                  }}
-                >
-                  {stage.title}
-                </h3>
-                <p>{stage.desc}</p>
-              </div>
-            ))}
-          </div>
+        <div className="mt-16">
+          {stages.map(([n,t,d], i) => (
+            <article 
+              key={n} 
+              className={`process-row group grid gap-4 border-t border-white/15 py-8 md:grid-cols-[100px_1fr_1fr] md:items-center reveal ${shown ? 'is-visible' : ''}`}
+              style={{ transitionDelay: `${i * 100}ms` }}
+            >
+              <span className="text-sm text-white font-mono">{n}</span>
+              <h3 className="text-3xl font-medium md:text-4xl text-white">{t}</h3>
+              <p className="max-w-lg text-white/60">{d}</p>
+            </article>
+          ))}
         </div>
       </div>
     </section>

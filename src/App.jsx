@@ -2,6 +2,9 @@ import { Routes, Route, useLocation, Navigate } from 'react-router-dom'
 import { useEffect } from 'react'
 import Home from './pages/Home'
 import Projects from './pages/Projects'
+import About from './pages/About'
+import Partnerships from './pages/Partnerships'
+import Demos from './pages/Demos'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import WhatsAppIntegration from './components/WhatsAppIntegration'
@@ -47,9 +50,12 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/services" element={<Navigate to="/#services" replace />} />
         <Route path="/process" element={<Navigate to="/#process" replace />} />
-        <Route path="/case-studies" element={<Navigate to="/#case-studies" replace />} />
+        <Route path="/work" element={<Navigate to="/#work" replace />} />
         <Route path="/impact" element={<Navigate to="/#impact" replace />} />
         <Route path="/projects" element={<Projects />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/partnerships" element={<Partnerships />} />
+        <Route path="/demos" element={<Demos />} />
       </Routes>
       <Footer />
       <WhatsAppIntegration />

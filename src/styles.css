@@ -1,0 +1,97 @@
+/* ============= Per-network icon hover identities (strict monochrome) ============= */
+/* Base: all social links share the same square shell; identity appears on hover. */
+.team-links a,
+.intern-links a {
+  position: relative;
+  border-radius: 0;
+}
+.team-links a::after,
+.intern-links a::after {
+  content: attr(data-label);
+  position: absolute;
+  left: 50%;
+  top: calc(100% + .55rem);
+  translate: -50% 6px;
+  padding: .28rem .55rem;
+  font: 700 .56rem "Space Mono", monospace;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--background);
+  background: var(--foreground);
+  border: 1px solid var(--border);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s ease, translate .25s ease;
+  z-index: 20;
+}
+.team-links a:hover::after,
+.team-links a:focus-visible::after,
+.intern-links a:hover::after,
+.intern-links a:focus-visible::after {
+  opacity: 1;
+  translate: -50% 0;
+}
+
+/* LinkedIn — morphs into LinkedIn's signature rounded-square badge */
+.team-links a[data-network="linkedin"]:hover,
+.team-links a[data-network="linkedin"]:focus-visible,
+.intern-links a[data-network="linkedin"]:hover,
+.intern-links a[data-network="linkedin"]:focus-visible {
+  border-radius: 26%;
+  background: var(--foreground);
+  color: var(--background);
+  transform: translateY(-3px) scale(1.08);
+  box-shadow: 0 0 0 1px var(--foreground), 0 0 18px color-mix(in oklab, var(--foreground) 35%, transparent);
+}
+.team-links a[data-network="linkedin"]:hover svg,
+.intern-links a[data-network="linkedin"]:hover svg {
+  transform: scale(1.18);
+}
+
+/* GitHub — morphs into GitHub's signature circular badge */
+.team-links a[data-network="github"]:hover,
+.team-links a[data-network="github"]:focus-visible,
+.intern-links a[data-network="github"]:hover,
+.intern-links a[data-network="github"]:focus-visible {
+  border-radius: 50%;
+  background: var(--foreground);
+  color: var(--background);
+  transform: translateY(-3px) scale(1.08);
+  box-shadow: 0 0 0 2px var(--background), 0 0 0 3.5px var(--foreground), 0 0 18px color-mix(in oklab, var(--foreground) 35%, transparent);
+}
+.team-links a[data-network="github"]:hover svg,
+.intern-links a[data-network="github"]:hover svg {
+  transform: scale(1.18);
+}
+
+/* Email — envelope pops with a soft pulse ring */
+.team-links a[data-network="mail"]:hover,
+.team-links a[data-network="mail"]:focus-visible,
+.intern-links a[data-network="mail"]:hover,
+.intern-links a[data-network="mail"]:focus-visible {
+  background: var(--foreground);
+  color: var(--background);
+  transform: translateY(-3px);
+  box-shadow: 0 0 0 1px var(--foreground), 0 0 16px color-mix(in oklab, var(--foreground) 30%, transparent);
+}
+
+.team-links svg,
+.intern-links svg {
+  transition: transform .3s cubic-bezier(.16, 1, .3, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .team-links a,
+  .intern-links a,
+  .team-links svg,
+  .intern-links svg {
+    transition: none;
+  }
+  .team-links a:hover,
+  .team-links a:focus-visible,
+  .intern-links a:hover,
+  .intern-links a:focus-visible {
+    transform: none;
+  }
+}
