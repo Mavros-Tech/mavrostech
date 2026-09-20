@@ -177,11 +177,12 @@ const interns = [
     ]
   },
   { 
-    name: "Prathima MC", 
+    name: "Prathima HM", 
     photo: "/assets/Prathima.jpeg",
     track: "Performance Marketer", 
-    linkedin: "https://www.linkedin.com/company/mavros-tech", 
-    github: "https://github.com/mavrostech",
+    email: "prathimahm48@gmail.com",
+    linkedin: "https://www.linkedin.com/in/prathima-hm-2763143a7?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", 
+    github: "https://github.com/Prathima32",
     bio: "As a Performance Marketer, I focus on driving measurable growth through data-driven campaigns, audience targeting, and strategic paid marketing.",
     modalBio: "As a Performance Marketer, I focus on driving measurable growth through data-driven campaigns, audience targeting, and strategic paid marketing.",
     detail: "From optimizing campaigns and analyzing performance to improving conversions and customer acquisition, the goal is to turn marketing efforts into measurable business results.",
