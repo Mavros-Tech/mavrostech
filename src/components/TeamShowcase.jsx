@@ -82,6 +82,24 @@ const team = [
     detail: "My focus lies in building efficient solutions, understanding complex problems, and contributing across technology, operations, and strategy.",
     quote: "Turning ideas into solutions, and solutions into impact.",
   },
+  {
+    name: "Sukhitha R Mopaghar",
+    smallName: true,
+    role: "Executive Director",
+    bio: "Driving innovation and growth through technology, leadership, and continuous learning. Passionate about transforming ideas into practical digital solutions, exploring emerging technologies, and bringing together creativity, strategy, and problem-solving to create meaningful real-world impact,",
+    modalBio: "I’m driven by technology, strategic thinking, and problem-solving to create meaningful real-world solutions. I enjoy turning ideas into practical outcomes through innovation, research, and structured execution.",
+    skills: ["Frontend Developer", "UI/UX Designer", "Digital Marketing"],
+    modalSkills: [
+      "Frontend Developer", "UI/UX Designer", "Quality Assurance & Testing","Digital Marketing",
+      "Research & Analysis", "Artificial Intelligence"
+    ],
+    photo: "/assets/Sukhitha.jpeg",
+    email: "sukhitharmopagar@gmail.com",
+    linkedin: "https://www.linkedin.com/in/sukhitha-r-mopagar-ab0b8b382/",
+    github: "https://github.com/Sukhitha-RM",
+    detail: "I enjoy working at the intersection of technology, innovation, and problem-solving, with a strong belief that great ideas become successful through collaboration, creativity, and continuous learning.",
+    quote: "Making things possible.",
+  },
 ];
 
 const interns = [
