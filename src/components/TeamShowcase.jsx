@@ -67,7 +67,7 @@ const team = [
   {
     name: "Saswatee Swain",
     smallName: true,
-    role: "CMO",
+    role: "CIO",
     bio: "I’m driven by technology, strategic thinking, and problem-solving to create meaningful real-world solutions.",
     modalBio: "I’m driven by technology, strategic thinking, and problem-solving to create meaningful real-world solutions. I enjoy turning ideas into practical outcomes through innovation, research, and structured execution.",
     skills: ["Frontend Developer", "UI/UX Designer", "Quality Assurance & Testing"],
