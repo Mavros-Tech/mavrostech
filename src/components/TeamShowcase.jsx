@@ -18,8 +18,8 @@ const team = [
     modalBio: "Leading with a vision to build meaningful technology that solves real-world problems. With a strong focus on innovation, product development, and business growth, the role involves bringing technology, design, and strategy together to turn ideas into scalable digital solutions.",
     skills: ["Leadership & Vision", "Product & Business Strategy", "UI/UX Design"],
     modalSkills: [
-      "Leadership & Vision", "Product & Business Strategy", "UI/UX Design", 
-      "Frontend Development", "AI & Technology", "Finance & Business Operations", 
+      "Leadership & Vision", "Product & Business Strategy", "UI/UX Design",
+      "Frontend Development", "AI & Technology", "Finance & Business Operations",
       "Marketing & Growth", "Team Management", "Innovation & Entrepreneurship"
     ],
     photo: "/assets/Manjith.jpeg",
@@ -90,7 +90,7 @@ const team = [
     modalBio: "I’m driven by technology, strategic thinking, and problem-solving to create meaningful real-world solutions. I enjoy turning ideas into practical outcomes through innovation, research, and structured execution.",
     skills: ["Frontend Developer", "UI/UX Designer", "Digital Marketing"],
     modalSkills: [
-      "Frontend Developer", "UI/UX Designer", "Quality Assurance & Testing","Digital Marketing",
+      "Frontend Developer", "UI/UX Designer", "Quality Assurance & Testing", "Digital Marketing",
       "Research & Analysis", "Artificial Intelligence"
     ],
     photo: "/assets/Sukhitha.jpeg",
@@ -100,15 +100,33 @@ const team = [
     detail: "I enjoy working at the intersection of technology, innovation, and problem-solving, with a strong belief that great ideas become successful through collaboration, creativity, and continuous learning.",
     quote: "Making things possible.",
   },
+  {
+    name: "Prajwal M",
+    smallName: true,
+    role: "Managing Director",
+    bio: "Driving innovation and growth through technology, leadership, and continuous learning. Passionate about transforming ideas into practical digital solutions, exploring emerging technologies, and bringing together creativity, strategy, and problem-solving to create meaningful real-world impact,",
+    modalBio: "I’m driven by technology, strategic thinking, and problem-solving to create meaningful real-world solutions. I enjoy turning ideas into practical outcomes through innovation, research, and structured execution.",
+    skills: ["Frontend Developer", "UI/UX Designer", "Supabase", "Backend"],
+    modalSkills: [
+      "Frontend Developer", "UI/UX Designer", "Quality Assurance & Testing", "Digital Marketing",
+      "Research & Analysis", "Supabase", "Backend"
+    ],
+    photo: "/assets/Prajwal.jpeg",
+    email: "prajwal9072@gmail.com",
+    linkedin: "https://www.linkedin.com/in/prajwal-m-77b0a1388//",
+    github: "https://github.com/Prajwal788744",
+    detail: "I enjoy working at the intersection of technology, innovation, and problem-solving, with a strong belief that great ideas become successful through collaboration, creativity, and continuous learning.",
+    quote: "Making things possible.",
+  },
 ];
 
 const interns = [
-  { 
-    name: "Jayashree\u00A0N", 
+  {
+    name: "Jayashree\u00A0N",
     photo: "/assets/Jayashreee.jpeg",
-    track: "Sales &\u00A0Technical Associate", 
+    track: "Sales &\u00A0Technical Associate",
     email: "jayashreen023@gmail.com",
-    linkedin: "https://www.linkedin.com/in/jayashree-nithyanand-2969a13a5?utm_source=share_via&utm_content=profile&utm_medium=member_android", 
+    linkedin: "https://www.linkedin.com/in/jayashree-nithyanand-2969a13a5?utm_source=share_via&utm_content=profile&utm_medium=member_android",
     github: "https://github.com/Jayashree N",
     bio: "Connecting technology, business, and digital growth by understanding client requirements and translating them into practical solutions.",
     modalBio: "Connecting technology, business, and digital growth by understanding client requirements and translating them into practical solutions. As a Sales & Technical Associate at MAVROS, I contribute across client communication, solution consulting, business development, and technical coordination.",
@@ -127,12 +145,12 @@ const interns = [
       "DIGITAL MARKETING & STRATEGY"
     ]
   },
-  { 
-    name: "Meghana T", 
+  {
+    name: "Meghana T",
     photo: "/assets/Meghana.jpeg",
-    track: "PRODUCT & GROWTH SPECIALIST", 
+    track: "PRODUCT & GROWTH SPECIALIST",
     email: "meghareddy0106@gmail.com",
-    linkedin: "https://www.linkedin.com/in/meghana-t-9592483a7?utm_source=share_via&utm_content=profile&utm_medium=member_android", 
+    linkedin: "https://www.linkedin.com/in/meghana-t-9592483a7?utm_source=share_via&utm_content=profile&utm_medium=member_android",
     github: "https://github.com/Meghana-0106",
     bio: "Building products that solve real problems and creating growth strategies that turn ideas into measurable impact.",
     modalBio: "Building products that solve real problems and creating growth strategies that turn ideas into measurable impact. The role focuses on understanding users, identifying opportunities, shaping product direction, and connecting product decisions with business goals.",
@@ -149,12 +167,12 @@ const interns = [
       "GO-TO-MARKET"
     ]
   },
-  { 
-    name: "Rishi Jotangia", 
+  {
+    name: "Rishi Jotangia",
     photo: "/assets/Rishii.jpeg",
-    track: "CYBERSECURITY ANALYST & TECHNOLOGY PROFESSIONAL", 
+    track: "CYBERSECURITY ANALYST & TECHNOLOGY PROFESSIONAL",
     email: "jotangia.rishi317@gmail.com",
-    linkedin: "https://www.linkedin.com/in/rishi-jotangia-9a5327369?utm_source=share_via&utm_content=profile&utm_medium=member_android", 
+    linkedin: "https://www.linkedin.com/in/rishi-jotangia-9a5327369?utm_source=share_via&utm_content=profile&utm_medium=member_android",
     github: "https://github.com/Rishi-Manish-Jotangia",
     bio: "Building secure, practical technology solutions and exploring how cybersecurity, AI, and software can solve real-world problems.",
     modalBio: "Building secure, practical technology solutions and exploring how cybersecurity, AI, and software can solve real-world problems. As a Cybersecurity Analyst, my focus is on understanding security challenges, identifying risks, and developing solutions that help protect digital systems and users.",
@@ -172,12 +190,12 @@ const interns = [
       "CLOUD COMPUTING"
     ]
   },
-  { 
-    name: "Ruchitha Biswal S", 
+  {
+    name: "Ruchitha Biswal S",
     photo: "/assets/Ruchii.jpeg",
-    track: "BRAND & VISUAL DESIGNER", 
+    track: "BRAND & VISUAL DESIGNER",
     email: "ruchibiswal2006@gmail.com",
-    linkedin: "https://www.linkedin.com/in/ruchitha-biswal-s-83547a35b", 
+    linkedin: "https://www.linkedin.com/in/ruchitha-biswal-s-83547a35b",
     github: "https://github.com/Ruchitha-2006",
     bio: "Building brands that communicate clearly, look distinctive, and create meaningful connections with people.",
     modalBio: "Building brands that communicate clearly, look distinctive, and create meaningful connections with people. The role focuses on shaping brand identities, developing visual systems, and turning ideas into consistent and memorable visual experiences.",
@@ -194,12 +212,12 @@ const interns = [
       "VISUAL COMMUNICATION"
     ]
   },
-  { 
-    name: "Prathima HM", 
+  {
+    name: "Prathima HM",
     photo: "/assets/Prathima.jpeg",
-    track: "Performance Marketer", 
+    track: "Performance Marketer",
     email: "prathimahm48@gmail.com",
-    linkedin: "https://www.linkedin.com/in/prathima-hm-2763143a7?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", 
+    linkedin: "https://www.linkedin.com/in/prathima-hm-2763143a7?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     github: "https://github.com/Prathima32",
     bio: "As a Performance Marketer, I focus on driving measurable growth through data-driven campaigns, audience targeting, and strategic paid marketing.",
     modalBio: "As a Performance Marketer, I focus on driving measurable growth through data-driven campaigns, audience targeting, and strategic paid marketing.",
