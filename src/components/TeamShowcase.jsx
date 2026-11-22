@@ -86,7 +86,7 @@ const team = [
     name: "Sukhitha R Mopaghar",
     smallName: true,
     role: "Executive Director",
-    bio: "Driving innovation and growth through technology, leadership, and continuous learning. Passionate about transforming ideas into practical digital solutions, exploring emerging technologies, and bringing together creativity, strategy, and problem-solving to create meaningful real-world impact,",
+    bio: "Driving innovation and growth through technology, leadership, and continuous learning. Passionate about transforming ideas into practical digital solutions, exploring emerging technologies, and bringing together creativity, strategy, and problem-solving to create meaningful real-world impact.",
     modalBio: "I’m driven by technology, strategic thinking, and problem-solving to create meaningful real-world solutions. I enjoy turning ideas into practical outcomes through innovation, research, and structured execution.",
     skills: ["Frontend Developer", "UI/UX Designer", "Digital Marketing"],
     modalSkills: [
@@ -104,7 +104,7 @@ const team = [
     name: "Prajwal M",
     smallName: true,
     role: "Managing Director",
-    bio: "Driving innovation and growth through technology, leadership, and continuous learning. Passionate about transforming ideas into practical digital solutions, exploring emerging technologies, and bringing together creativity, strategy, and problem-solving to create meaningful real-world impact,",
+    bio: "Driving innovation and growth through technology, leadership, and continuous learning. Passionate about transforming ideas into practical digital solutions, exploring emerging technologies, and bringing together creativity, strategy, and problem-solving to create meaningful real-world impact.",
     modalBio: "I’m driven by technology, strategic thinking, and problem-solving to create meaningful real-world solutions. I enjoy turning ideas into practical outcomes through innovation, research, and structured execution.",
     skills: ["Frontend Developer", "UI/UX Designer", "Supabase", "Backend"],
     modalSkills: [
@@ -113,7 +113,7 @@ const team = [
     ],
     photo: "/assets/Prajwal.jpeg",
     email: "prajwal9072@gmail.com",
-    linkedin: "https://www.linkedin.com/in/prajwal-m-77b0a1388//",
+    linkedin: "https://www.linkedin.com/in/prajwal-m-77b0a1388/",
     github: "https://github.com/Prajwal788744",
     detail: "I enjoy working at the intersection of technology, innovation, and problem-solving, with a strong belief that great ideas become successful through collaboration, creativity, and continuous learning.",
     quote: "Making things possible.",
